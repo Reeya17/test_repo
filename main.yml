@@ -1,30 +1,15 @@
+trigger:
+- main
+
 pool:
   name: 'Self-hosted-pool'
 
+steps:
+- script: "echo Hello, World!"
+  displayName: 'Checking pipeline is able to use SHIR machine'
 
-stages:
-- stage: Prepare
-  variables:
-    environmentName: 'dev'
-    # Stage level variable with the service connection name
-    # Evaluates to conenctionString-test-001
+- task: AzurePowerShell@5
+  inputs:
     azureSubscription: 'azure-devops-svc'
-
-  jobs:
-  - job: RunStuff
-    steps:
-    - task: AzureCLI@2
-      inputs:
-        # Set this input to the computed value
-        azureSubscription: ${{ variables.azureSubscription }}
-        scriptType: bash
-        scriptLocation: inlineScript
-        inlineScript: 'echo Hello ${{ variables.azureSubscription }}'
-
-    - task: AzurePowerShell@5
-      inputs:
-        # Set this input to the computed value
-        azureSubscription: ${{ variables.azureSubscription }}
-        azurePowerShellVersion: 'LatestVersion'
-        scriptType: 'InlineScript'
-        inline: Write-Host "Hello power ${{ variables.azureSubscription }}"
+    ScriptType: 'InlineScript'
+    Inline: New-AzResourceGroup -Name 'myResourceGroup' -Location 'eastus'

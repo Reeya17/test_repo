@@ -6,7 +6,7 @@ pool:
 
 steps:
 - script: "echo Hello, World!"
-  displayName: 'Check Azure CLI Version'
+  displayName: 'Checking pipeline is able to use SHIR machine'
 
 - task: AzureCLI@2
   inputs:

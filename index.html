@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>                                                                
+<head>
+  <title>SHOW HELLO ONCE AND WORLD LATER</title>
+  <style>                                                            
+    html { color-scheme: light dark; }
+    body {
+      width: 35em;
+      margin: 0 auto;
+      font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+  </style>
+  <script>
+    if (!localStorage.getItem("visited")) {
+      localStorage.setItem("text", "Hello");
+      localStorage.setItem("visited", "true");
+    } else {
+      localStorage.setItem("text", "World");
+    }
+  </script>
+</head>
+<body>
+  <h1 id="displayText"></h1>
+  <script>
+    const text = localStorage.getItem("text");
+    document.getElementById("displayText").textContent = text;
+  </script>
+</body>
+</html>

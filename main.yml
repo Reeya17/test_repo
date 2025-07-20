@@ -17,7 +17,7 @@ steps:
         --name vm-dev-webserver2 \
         --image UbuntuLTS \
         --admin-username azureuser \
-        --admin-password ${adminPassword}
+        --admin-password $(ADMINPASS)
     displayName: 'Create Azure VM'
 - task: AzureCLI@2
   inputs:

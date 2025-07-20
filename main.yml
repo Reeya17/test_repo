@@ -26,7 +26,7 @@ steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'azure-devops-svc'
-    scriptType: 'pow'ershell'
+    scriptType: 'powershell'
     scriptLocation: 'inlineScript'
     inlineScript: |
       az vm start --resource-group rg-dev-vm2 --name vm-dev-webserver2

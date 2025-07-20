@@ -8,34 +8,23 @@ steps:
 - script: "echo Hello, World!"
   displayName: 'Checking pipeline is able to use SHIR machine'
 
-- task: AzureCLI@2
+- task: AzurepowerShell@5
   inputs:
+    displayName: 'Create Resource Group and VM'
     azureSubscription: 'azure-devops-svc'
-    scriptType: 'powershell'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az group create --name rg-dev-vm2 --location westeurope
-      az vm create \
-      --resource-group rg-dev-vm2 \
-      --name vm-dev-webserver2 \
-      --image UbuntuLTS \
-      --admin-username azureuser \
-      --admin-password $(ADMINPASS)
-    az vm open-port --port 80 --resource-group rg-dev-vm2 --name vm-dev-webserver2
-    displayName: 'Create Azure VM'
-- task: AzureCLI@2
-  inputs:
-    azureSubscription: 'azure-devops-svc'
-    scriptType: 'powershell'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az vm start --resource-group rg-dev-vm2 --name vm-dev-webserver2
-    displayName: 'Start Azure VM'
-- task: AzureCLI@2
-  inputs: 
-    azureSubscription: 'azure-devops-svc'
-    scriptType: 'powershell'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az vm run-command invoke --resource-group rg-dev-vm2 --name vm-dev-webserver2 --command-id RunShellScript --scripts "echo Hello, World!"
-    displayName: 'Run Command on Azure VM'
+    ScriptType: 'inlineScript'
+    Inline: |
+      $resourceGroupName = "rg-dev-vm2"
+      $location = "westeurope"
+      $vmName = "vm-dev-webserver2"
+      
+      # Create Resource Group
+      New-AzResourceGroup -Name $resourceGroupName -Location $location
+      
+      # Create Virtual Machine
+      New-AzVM -ResourceGroupName $resourceGroupName -Name $vmName -Location $location -Image "Win2019Datacenter" -Size "Standard_DS1_v2" -Credential (Get-Credential)
+    azurePowerShellVersion: 'LatestVersion'
+    pwsh: true
+    failOnStandardError: true
+    azurePowerShellVersion: 'LatestVersion'
+

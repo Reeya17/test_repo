@@ -11,21 +11,22 @@ steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'azure-devops-svc'
-    scriptType: 'bash'
+    scriptType: 'powershell'
     scriptLocation: 'inlineScript'
     inlineScript: |
       az group create --name rg-dev-vm2 --location westeurope
       az vm create \
-        --resource-group rg-dev-vm2 \
-        --name vm-dev-webserver2 \
-        --image UbuntuLTS \
-        --admin-username azureuser \
-        --admin-password $(ADMINPASS)
+      --resource-group rg-dev-vm2 \
+      --name vm-dev-webserver2 \
+      --image UbuntuLTS \
+      --admin-username azureuser \
+      --admin-password $(ADMINPASS)
+    az vm open-port --port 80 --resource-group rg-dev-vm2 --name vm-dev-webserver2
     displayName: 'Create Azure VM'
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'azure-devops-svc'
-    scriptType: 'bash'
+    scriptType: 'pow'ershell'
     scriptLocation: 'inlineScript'
     inlineScript: |
       az vm start --resource-group rg-dev-vm2 --name vm-dev-webserver2
@@ -33,7 +34,7 @@ steps:
 - task: AzureCLI@2
   inputs: 
     azureSubscription: 'azure-devops-svc'
-    scriptType: 'bash'
+    scriptType: 'powershell'
     scriptLocation: 'inlineScript'
     inlineScript: |
       az vm run-command invoke --resource-group rg-dev-vm2 --name vm-dev-webserver2 --command-id RunShellScript --scripts "echo Hello, World!"

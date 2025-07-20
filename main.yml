@@ -12,4 +12,5 @@ steps:
   inputs:
     azureSubscription: 'azure-devops-svc'
     ScriptType: 'InlineScript'
-    Inline: New-AzResourceGroup -Name 'myResourceGroup' -Location 'eastus'
+    Inline: 'New-AzResourceGroup -Name ''myResourceGroup'' -Location ''eastus'''
+    azurePowerShellVersion: 'LatestVersion'

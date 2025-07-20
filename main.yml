@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: 'Self-hosted-pool'
+  name: 'cloud-vmss-agent-linux'
 
 steps:
 - script: az --login

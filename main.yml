@@ -5,6 +5,9 @@ pool:
   name: 'Azure Pipelines'
 
 steps:
+- script: az --version
+  displayName: 'Check Azure CLI Version'
+
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'azure-devops-svc'

@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: 'cloud-vmss-agent-linux'
+  name: 'Default'
 
 steps:
 - script: az --version

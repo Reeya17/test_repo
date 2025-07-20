@@ -2,11 +2,11 @@ trigger:
 - main
 
 pool:
-  name: 'Azure Pipelines'
+  name: 'Self-hosted-pool'
 
 steps:
-- script: az --version
-  displayName: 'Check Azure CLI Version'
+- script: "echo Hello, World!"
+  displayName: 'Checking pipeline is able to use SHIR machine'
 
 - task: AzureCLI@2
   inputs:

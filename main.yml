@@ -2,8 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
-
+  name: 'Self-hosted-pool'
 steps:
 - task: AzureCLI@2
   inputs:

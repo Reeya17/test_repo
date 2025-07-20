@@ -14,3 +14,4 @@ steps:
     ScriptType: 'InlineScript'
     Inline: 'New-AzResourceGroup -Name ''myResourceGroup'' -Location ''eastus'''
     azurePowerShellVersion: 'LatestVersion'
+    pwsh: true

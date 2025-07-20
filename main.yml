@@ -7,11 +7,10 @@ pool:
 steps:
 - script: "echo Hello, World!"
   displayName: 'Checking pipeline is able to use SHIR machine'
-
-- task: AzurePowerShell@5
+- task: AzureCLI@2
   inputs:
     azureSubscription: 'azure-devops-svc'
-    ScriptType: 'InlineScript'
-    Inline: 'New-AzResourceGroup -Name ''myResourceGroup'' -Location ''eastus'''
-    azurePowerShellVersion: 'LatestVersion'
-    pwsh: true
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az group create --name rg-dev-vm2 --location westeurope

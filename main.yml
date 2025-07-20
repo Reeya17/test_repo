@@ -1,29 +1,30 @@
-trigger:
-- main
-
 pool:
   name: 'Self-hosted-pool'
 
-steps:
-- script: "echo Hello, World!"
-  displayName: 'Checking pipeline is able to use SHIR machine'
 
-- task: AzurepowerShell@5
-  inputs:
-    displayName: 'Create Resource Group and VM'
+stages:
+- stage: Prepare
+  variables:
+    environmentName: 'dev'
+    # Stage level variable with the service connection name
+    # Evaluates to conenctionString-test-001
     azureSubscription: 'azure-devops-svc'
-    ScriptType: 'inlineScript'
-    Inline: |
-      $resourceGroupName = "MyResourceGroup"
-      $location = "WestEurope"
-      $vmName = "MyLinuxVM"
-      $vmSize = "Standard_B1s" 
-      $image = "UbuntuLTS" 
-      $adminUsername = "azureuser"
-      $password = ${env:ADMINPASS}
 
-      New-AzResourceGroup -Name $resourceGroupName -Location $location
+  jobs:
+  - job: RunStuff
+    steps:
+    - task: AzureCLI@2
+      inputs:
+        # Set this input to the computed value
+        azureSubscription: ${{ variables.azureSubscription }}
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: 'echo Hello ${{ variables.azureSubscription }}'
 
-    azurePowerShellVersion: 'LatestVersion'
-
-
+    - task: AzurePowerShell@5
+      inputs:
+        # Set this input to the computed value
+        azureSubscription: ${{ variables.azureSubscription }}
+        azurePowerShellVersion: 'LatestVersion'
+        scriptType: 'InlineScript'
+        inline: Write-Host "Hello power ${{ variables.azureSubscription }}"

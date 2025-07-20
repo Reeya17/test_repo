@@ -5,7 +5,7 @@ pool:
   name: 'cloud-vmss-agent-linux'
 
 steps:
-- script: az --login
+- script: az --version
   displayName: 'Check Azure CLI Version'
 
 - task: AzureCLI@2

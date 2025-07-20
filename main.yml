@@ -26,5 +26,5 @@ steps:
     azurePowerShellVersion: 'LatestVersion'
     pwsh: true
     failOnStandardError: true
-    azurePowerShellVersion: 'LatestVersion'
+
 

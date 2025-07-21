@@ -1,6 +1,3 @@
-set -a
-source .env
-set +a
 az group create --name rg-dev-vm3 --location westeurope
 az vm create \
         --resource-group rg-dev-vm3 \

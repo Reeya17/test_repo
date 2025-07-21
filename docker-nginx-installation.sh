@@ -2,8 +2,6 @@
 # This script installs Docker and Nginx, pulls the latest Nginx image,
 # and runs a container with a volume mounted to serve static content.
 apt-get update -y
-cd /home/azureuser/HelloWorld/test_repo
-git pull origin main
 apt-get install docker.io -y
 systemctl start docker.service
 systemctl enable docker.service

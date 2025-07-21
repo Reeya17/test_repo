@@ -24,11 +24,11 @@ cd /home/azureuser/HelloWorld
 git clone https://github.com/Reeya17/test_repo
 
 ```
-5. Execute docker-ngnix-installation.sh
+5. Execute docker-nginx-installation.sh
 ```bash
-bash docker-ngnix-installation.sh
+bash docker-nginx-installation.sh
 ```
-Expected output : Nginix image will run on docker container with custom HTML web page mounted on container volume, port 80 of VM will me mapped with port 80 of container, container will be in running state.
+Expected output : Nginx image will run on docker container with custom HTML web page mounted on container volume, port 80 of VM will me mapped with port 80 of container, container will be in running state.
 
 To debug, use commands : 
 ```bash

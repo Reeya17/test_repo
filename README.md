@@ -22,9 +22,15 @@ sudo su
 mkdir -p /home/azureuser/HelloWorld
 cd /home/azureuser/HelloWorld
 git clone https://github.com/Reeya17/test_repo
-
 ```
-5. Execute docker-nginx-installation.sh
+
+5. Pull the updated repository for subsequent times:
+```bash
+cd /home/azureuser/HelloWorld/test_repo
+git pull origin main
+```
+
+6. Execute docker-nginx-installation.sh
 ```bash
 bash docker-nginx-installation.sh
 ```

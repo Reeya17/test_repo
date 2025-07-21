@@ -1,3 +1,6 @@
+#!/bin/bash
+# This script creates a resource group, virtual network, subnet, network security group,
+# and a virtual machine in Azure, then opens port 80 for web traffic.
 az group create --name rg-dev-vm3 --location westeurope
 az vm create \
         --resource-group rg-dev-vm3 \
@@ -10,7 +13,7 @@ az vm create \
         --nsg nsg-dev-vm3 \
         --nsg-rule SSH \
         --location westeurope \
-        --admin-username azureuser \
+        --admin-username $username \
         --generate-ssh-keys
 
 az vm open-port --port 80 --resource-group rg-dev-vm3 --name vm-dev-webserver3

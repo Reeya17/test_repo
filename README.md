@@ -4,8 +4,38 @@ This repository create a small web site that displays "Hello" on the first visit
 
 Steps to Reploy:
 1.Execute the script main.azcli
+```bash
 bash main.azcli
+```
 
 Expected output : Resource Group and Azure VM will be created -  Also port 80 will be opened in VM using NSG rules to access the website.
 2.   
+```bash
 ssh -i /home/riyar/.ssh/id_rsa $username@$ip
+```
+3. change to root user
+```bash
+sudo su
+```
+4. Clone the updated repository for first time setting:
+```bash
+mkdir -p /home/azureuser/HelloWorld
+cd /home/azureuser/HelloWorld
+git clone https://github.com/Reeya17/test_repo
+
+```
+5. Execute docker-ngnix-installation.sh
+```bash
+bash docker-ngnix-installation.sh
+```
+Expected output : Nginix image will run on docker container with custom HTML web page mounted on container volume, port 80 of VM will me mapped with port 80 of container, container will be in running state.
+
+To debug, use commands : 
+```bash
+docker logs --tail 100 <container_name>
+docker exec -it <container_name> bash
+
+```
+
+
+

@@ -1,6 +1,6 @@
-set -a
-source .env
-set +a
+#set -a
+#source .env
+#set +a
 az group create --name rg-dev-vm2 --location westeurope
 az vm create \
         --resource-group rg-dev-vm2 \
@@ -15,3 +15,4 @@ az vm create \
         --location westeurope \
         --admin-username azureuser \
         --admin-password "$ADMINPASS"
+az vm open-port --port 80 --resource-group rg-dev-vm2 --name vm-dev-webserver2

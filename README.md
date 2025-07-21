@@ -2,7 +2,8 @@
 This repository create a small web site that displays "Hello" on the first visit, and "World" on any subsequent visits.
 
 
-Steps to Reploy:
+**Steps to Redeploy:**
+
 1.Execute the script main.azcli
 ```bash
 bash main.azcli

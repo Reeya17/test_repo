@@ -11,4 +11,5 @@ docker stop HelloWorld
 docker rm HelloWorld
 docker run --restart unless-stopped --name HelloWorld -p 80:80 -v /home/zureuser/HelloWorld/test_repo/:/usr/share/nginx/html -d nginx:latest
 docker ps -a
+sleep 5
 curl http://localhost

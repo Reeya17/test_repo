@@ -14,5 +14,6 @@ az vm create \
         --nsg-rule SSH \
         --location westeurope \
         --admin-username azureuser \
-        --admin-password "$ADMINPASS3"
+        --generate-ssh-keys
+
 az vm open-port --port 80 --resource-group rg-dev-vm3 --name vm-dev-webserver3

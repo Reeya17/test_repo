@@ -27,6 +27,8 @@ git clone https://github.com/Reeya17/test_repo
 
 5. Pull the updated repository for subsequent times:
 ```bash
+
+
 cd /home/azureuser/HelloWorld/test_repo
 git pull origin main
 ```
@@ -44,5 +46,11 @@ docker exec -it <container_name> bash
 
 ```
 
+Website pictures:
 
 
+![Hello-First-Visit](https://github.com/user-attachments/assets/e0c06063-4b2c-4d9c-a294-80dd6703374a)
+
+![world-first-visit-refresh](https://github.com/user-attachments/assets/2332d5c3-1914-4490-97f2-0d566f506567)
+
+![world-subsequent-visit](https://github.com/user-attachments/assets/ba75a9e6-02f0-46b6-a282-e53032355ea7)
